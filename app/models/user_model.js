@@ -7,13 +7,15 @@ function login(req, res, next) {
   if (bodyValue.password == "4321") {
     res.json({
       "status": "success",
+      "ResponseCode": 200,
       "msg": "Login succeeded",
-      "userData": [{ name: "Vignesh", msg: "Welcome back" }]
+      "userData": [{ name: "Vignesh", email: req.body.userName, skils: ["Java", "reactJs", 'react native'] }]
     });
   }
   else {
     res.json({
       "status": "failure",
+      "ResponseCode": 422,
       "msg": "Login Failed",
       "Reason": {
         "message": "Incorrect password"

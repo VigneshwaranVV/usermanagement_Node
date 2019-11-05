@@ -1,0 +1,7 @@
+{
+  "applicationVersion": "1.0.0",
+  "whitelist_urls": [
+    "http://localhost:3001/",
+    "https://vtestapp-1.herokuapp.com/"
+  ]
+}
