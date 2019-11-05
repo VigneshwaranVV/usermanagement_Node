@@ -1,11 +1,11 @@
 var express = require('express');
-var router = express.Router();
+var userRouter = express.Router();
+const appRoot = require('app-root-path');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json({user1:{
-    name:"vignesh"}
-  });
-});
+const UserController = require(appRoot + '/app/controllers/user_controller');
+const userController = new UserController();
 
-module.exports = router;
+userRouter.post('/login', userController.login)
+userRouter.post('/logout', userController.logout)
+
+module.exports = userRouter;
