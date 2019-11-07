@@ -62,6 +62,16 @@ class UserController {
     }
   }
 
+  registerUser(req, res, next) {
+    try {
+      userModel.registerUser(req, res, next);
+    } catch (e) {
+      res.status(500).json({
+        msg: 'Error - /user/registerUser Failed!'
+      });
+    }
+  }
+
   logout(req, res, next) {
     try {
       userModel.logout(req, res, next);

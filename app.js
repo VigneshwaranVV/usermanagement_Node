@@ -1,6 +1,12 @@
 var createError = require('http-errors');
 var express = require('express');
 const cors = require("cors");
+const session = require('express-session');
+
+const redis = require('redis');
+const redisClient = redis.createClient();
+const redisStore = require('connect-redis')(session);
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -10,6 +16,19 @@ const routeUtil = require(appRoot + "/utils/route_util.js");
 const configData = require(appRoot + '/config/config.js')();
 
 var app = express();
+
+// app.use(session({secret: 'x1234'}));
+
+
+
+app.use(session({
+  secret: 'x1234',
+  name: '_redisPractice',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }, // Note that the cookie-parser module is no longer needed
+  store: new redisStore({ host: 'localhost', port: 6379, client: redisClient, ttl: 86400 }),
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
