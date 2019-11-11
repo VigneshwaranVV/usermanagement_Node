@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 const cors = require("cors");
 const session = require('express-session');
+const crypto = require('crypto');
 
 // const redis = require('redis');
 // const redisClient = redis.createClient();
@@ -23,6 +24,10 @@ var app = express();
 
 app.use(session({
   secret: 'x1234',
+  genid: function (req) {
+    // use UUIDs for session IDs
+    // return crypto.createHash('sha256').update(uuidv1()).update(crypto.randomBytes(256)).digest("hex");
+  },
   name: '_redisPractice',
   resave: false,
   saveUninitialized: true,
@@ -40,7 +45,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
-app.use('/',indexRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

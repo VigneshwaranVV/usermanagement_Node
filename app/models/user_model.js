@@ -11,15 +11,15 @@ function login(req, res, next) {
       if (reply) {
         res.json({
           "status": "success",
-          "ResponseCode": 200,
+          "responseCode": 200,
           "message": "Login succeeded",
-          // "userData": JSON.parse(reply)
+          "userData": JSON.parse(reply)
         });
       }
       else {
         res.json({
           "status": "Failed",
-          "ResponseCode": 500,
+          "responseCode": 500,
           "message": "Internal error",
         });
       }
@@ -43,6 +43,7 @@ function login(req, res, next) {
 function logout(req, res, next) {
   res.json({
     "status": "success",
+    "responseCode": 200,
     "message": "LogOutsucceeded",
   });
 }
@@ -50,11 +51,12 @@ function logout(req, res, next) {
 function registerUser(req, res, next) {
   const reqBody = req.body;
   let formData = reqBody.formData ? reqBody.formData : {};
-  rclient.set(reqBody.email, JSON.stringify(formData), function (err, reply) {
+  rclient.set(formData.email, JSON.stringify(formData), function (err, reply) {
     console.log(reply);
   });
   res.json({
     "status": "success",
+    "responseCode": 200,
     "message": "Registration success",
   });
 }
