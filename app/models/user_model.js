@@ -8,8 +8,8 @@ function login(req, res, next) {
 
   const bodyValue = req.body
   if (bodyValue.password == "4321") {
-    client.get(req.body.email, function (err, reply) {
-      if (reply) {
+    // client.get(req.body.email, function (err, reply) {
+    //   if (reply) {
         res.json({
           "status": "success",
           "ResponseCode": 200,
@@ -24,19 +24,19 @@ function login(req, res, next) {
           "message": "Internal error",
         });
       }
-    })
+  //   })
 
-  }
-  else {
-    res.json({
-      "status": "Failed",
-      "ResponseCode": 422,
-      "message": "Login Failed",
-      "Reason": {
-        "message": "Incorrect password"
-      }
-    });
-  }
+  // }
+  // else {
+  //   res.json({
+  //     "status": "Failed",
+  //     "ResponseCode": 422,
+  //     "message": "Login Failed",
+  //     "Reason": {
+  //       "message": "Incorrect password"
+  //     }
+  //   });
+  // }
 
 }
 
@@ -51,9 +51,9 @@ function logout(req, res, next) {
 function registerUser(req, res, next) {
   const reqBody = req.body;
   let formData = reqBody.formData ? reqBody.formData : {};
-  client.set(reqBody.email, JSON.stringify(formData), function (err, reply) {
-    console.log(reply);
-  });
+  // client.set(reqBody.email, JSON.stringify(formData), function (err, reply) {
+  //   console.log(reply);
+  // });
   res.json({
     "status": "success",
     "message": "Registration success",
