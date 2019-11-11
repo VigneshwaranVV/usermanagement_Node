@@ -1,6 +1,6 @@
 const appRoot = require('app-root-path');
-var redis = require('redis');
-var client = redis.createClient()
+// var redis = require('redis');
+// var client = redis.createClient()
 
 //This method process the login API request from client using the response from Mulesoft.
 function login(req, res, next) {
