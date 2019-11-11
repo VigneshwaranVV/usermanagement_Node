@@ -3,5 +3,7 @@
   "whitelist_urls": [
     "http://localhost:3001/",
     "https://vtestapp-1.herokuapp.com/"
-  ]
+  ],
+  "elasticache_redis_url": "ewaw-de01-usw2-redis.lvo6vd.clustercfg.usw2.cache.amazonaws.com",
+  "elasticache_redis_port": "6379"
 }

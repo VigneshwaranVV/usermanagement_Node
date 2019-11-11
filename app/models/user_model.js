@@ -1,6 +1,5 @@
 const appRoot = require('app-root-path');
-var redis = require('redis');
-var client = redis.createClient({host : 'localhost', port : 6379});
+const rclient = require(appRoot + "/utils/redis_client")();
 
 //This method process the login API request from client using the response from Mulesoft.
 function login(req, res, next) {
@@ -8,7 +7,7 @@ function login(req, res, next) {
 
   const bodyValue = req.body
   if (bodyValue.password == "4321") {
-    client.get(req.body.email, function (err, reply) {
+    rclient.get(req.body.email, function (err, reply) {
       if (reply) {
         res.json({
           "status": "success",
@@ -51,7 +50,7 @@ function logout(req, res, next) {
 function registerUser(req, res, next) {
   const reqBody = req.body;
   let formData = reqBody.formData ? reqBody.formData : {};
-  client.set(reqBody.email, JSON.stringify(formData), function (err, reply) {
+  rclient.set(reqBody.email, JSON.stringify(formData), function (err, reply) {
     console.log(reply);
   });
   res.json({
