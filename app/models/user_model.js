@@ -19,8 +19,8 @@ function login(req, res, next) {
       else {
         res.json({
           "status": "Failed",
-          "responseCode": 500,
-          "message": "Internal error",
+          "responseCode": 422,
+          "message": "User Not found",
         });
       }
     })
@@ -29,11 +29,8 @@ function login(req, res, next) {
   else {
     res.json({
       "status": "Failed",
-      "ResponseCode": 422,
-      "message": "Login Failed",
-      "Reason": {
-        "message": "Incorrect password"
-      }
+      "responseCode": 422,
+      "message": "Incorrect password"
     });
   }
 
