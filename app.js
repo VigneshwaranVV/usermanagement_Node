@@ -27,7 +27,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }, // Note that the cookie-parser module is no longer needed
-  store: new redisStore({ host: 'localhost', port: 6379, client: redisClient, ttl: 86400 }),
+  // store: new redisStore({ host: 'localhost', port: 6379, client: redisClient, ttl: 86400 }),
 }));
 
 // view engine setup
@@ -39,8 +39,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', cors(), indexRouter);
+app.use(cors());
+app.use('/',indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
