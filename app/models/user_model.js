@@ -14,7 +14,7 @@ function login(req, res, next) {
           "status": "success",
           "ResponseCode": 200,
           "message": "Login succeeded",
-          "userData": JSON.parse(reply)
+          // "userData": JSON.parse(reply)
         });
       }
       else {
