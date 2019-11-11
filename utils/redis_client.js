@@ -1,6 +1,5 @@
 const appRoot = require('app-root-path');
 const config_data = require(appRoot + '/config/config.js')();
-require('dotenv').config();
 
 const connEnv = process.env.CONN_ENV;
 
