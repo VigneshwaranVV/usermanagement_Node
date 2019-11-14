@@ -1,0 +1,13 @@
+const STATUS_CODE={
+    "SUCCESS" :200,
+    "SUCCESS_CREATED" :201,
+    "FAILED_UNAUTHORIZED" :401,
+    "FAILED_BADREQUEST":400,
+    "INTERNAL_SERVER_ERROR":500
+}
+
+
+
+module.exports = {
+    STATUS_CODE
+}

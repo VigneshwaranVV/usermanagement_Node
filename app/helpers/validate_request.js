@@ -7,14 +7,18 @@ class ValidateRequestController {
         const reqBody = req.body;
         if (reqBody !== undefined) {
             let email_regex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
-            if (reqBody.email && !(email_regex.test(reqBody.email))) {
+            if(!reqBody.formData.email){
+                mandatoryDataValidationFailedCount++;
+                errorMsg = "email field is required" 
+            }
+            else if (reqBody.formData.email && !(email_regex.test(reqBody.formData.email))) {
                 mandatoryDataValidationFailedCount++;
                 errorMsg = "Please provide valid email"
             }
             if (mandatoryDataValidationFailedCount > 0) {
-                res.status(401).json({
+                res.status(400).json({
                     Status: "failure",
-                    ResponseCode: 422,
+                    ResponseCode: 400,
                     Reasons: [
                         {
                             ReasonCode: 601,

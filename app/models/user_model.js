@@ -1,6 +1,6 @@
 const appRoot = require('app-root-path');
 const rclient = require(appRoot + "/utils/redis_client")();
-
+const constants =require(appRoot +"/common/constants")
 //This method process the login API request from client using the response from Mulesoft.
 function login(req, res, next) {
   console.log("req.body ======>", req.session)
@@ -11,7 +11,7 @@ function login(req, res, next) {
       if (reply) {
         res.json({
           "status": "success",
-          "responseCode": 200,
+          "responseCode": constants.STATUS_CODE.SUCCESS,
           "message": "Login succeeded",
           "userData": JSON.parse(reply)
         });
@@ -27,9 +27,9 @@ function login(req, res, next) {
 
   }
   else {
-    res.json({
+    res.status(401).json({
       "status": "Failed",
-      "responseCode": 422,
+      "responseCode": 401,
       "message": "Incorrect password"
     });
   }
