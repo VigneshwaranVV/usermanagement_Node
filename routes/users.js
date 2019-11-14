@@ -11,5 +11,6 @@ const validateRequest = new ValidateRequestController();
 userRouter.post('/login', userController.login)
 userRouter.post('/register', validateRequest.validateRegistrationData, userController.registerUser)
 userRouter.post('/logout', userController.logout)
+userRouter.post('/deleteUser', userController.deleteUser)
 
 module.exports = userRouter;

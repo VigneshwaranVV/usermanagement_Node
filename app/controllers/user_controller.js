@@ -81,6 +81,15 @@ class UserController {
       });
     }
   }
+  deleteUser(req, res, next) {
+    try {
+      userModel.deleteUser(req, res, next);
+    } catch (e) {
+      res.status(500).json({
+        msg: 'Error - /user/deleteUser request Failed!'
+      });
+    }
+  }
 }
 
 module.exports = UserController;
