@@ -17,6 +17,7 @@ const routeUtil = require(appRoot + "/utils/route_util.js");
 const configData = require(appRoot + '/config/config.js')();
 
 var app = express();
+app.use(cors())
 
 // app.use(session({secret: 'x1234'}));
 
@@ -75,7 +76,6 @@ const corsOptions = {
     }
   }
 };
-app.use(cors())
 // app.use(cors(corsOptions));
 routeUtil.printRoutes(app);
 
