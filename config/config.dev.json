@@ -1,10 +1,10 @@
 {
   "applicationVersion": "1.0.0",
   "whitelist_urls": [
-    "http://localhost:3001/",
+    "http://localhost:3000/",
     "https://vtestapp-1.herokuapp.com/"
   ],
-  "elasticache_redis_url": "ewaw-de01-usw2-redis.lvo6vd.clustercfg.usw2.cache.amazonaws.com",
+  "elasticache_redis_url": "ewaw-st01-usw2-redis.lvo6vd.clustercfg.usw2.cache.amazonaws.com",
   "elasticache_redis_port": "6379",
   "newsapi_appkey": "24312351b27547219637086bce033b50"
 }

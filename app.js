@@ -23,18 +23,26 @@ app.use(cors())
 
 
 
-app.use(session({
-  secret: 'x1234',
-  genid: function (req) {
-    // use UUIDs for session IDs
-    // return crypto.createHash('sha256').update(uuidv1()).update(crypto.randomBytes(256)).digest("hex");
-  },
-  name: '_redisPractice',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }, // Note that the cookie-parser module is no longer needed
-  // store: new redisStore({ host: 'localhost', port: 6379, client: redisClient, ttl: 86400 }),
-}));
+app.use(
+  session({
+    genid: function (req) {
+      // use UUIDs for session IDs
+      return crypto
+        .createHash("sha256")
+        // .update(uuid.v1())
+        .update(crypto.randomBytes(256))
+        .digest("hex");
+    },
+    secret: "MySecretToken",
+    //store: new redisStore({ host: process.env.ELASTICACHE_REDIS_DEV_URL, port: Number( process.env.ELASTICACHE_REDIS_DEV_PORT), client:rclient, ttl: 260 }),
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+      secure: true,
+      maxAge: 3600
+    }
+  })
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -76,7 +84,7 @@ const corsOptions = {
     }
   }
 };
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 routeUtil.printRoutes(app);
 
 module.exports = app;

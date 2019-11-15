@@ -4,7 +4,7 @@ module.exports = function () {
 
     config_data = {}
     //Default config file
-    config_data = require(appRoot + '/config/config.dev.json');
+    config_data = require(appRoot + '/config/config.local.json');
 
 
     return config_data;
