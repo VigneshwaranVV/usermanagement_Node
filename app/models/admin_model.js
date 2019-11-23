@@ -6,30 +6,30 @@ var async = require('async');
 function listUser(req, res, next) {
     try {
 
-        var jobs = [];
-        rclient.keys('*', function (err, keys) {
-            if (err) return console.log(err);
-            if (keys) {
-                async.map(keys, function (key, cb) {
-                    rclient.get(key, function (error, value) {
-                        if (error) return cb(error);
-                        var job = {};
-                        job['email'] = key;
-                        job['userData'] = JSON.parse(value);
-                        cb(null, job);
-                    });
-                }, function (error, results) {
-                    if (error) return console.log(error);
-                    // console.log(results);
-                    res.json({ 
-                        data: results,
-                        "status": "success",
-                        "responseCode": constants.STATUS_CODE.SUCCESS,
+        // var jobs = [];
+        // rclient.keys('*', function (err, keys) {
+        //     if (err) return console.log(err);
+        //     if (keys) {
+        //         async.map(keys, function (key, cb) {
+        //             rclient.get(key, function (error, value) {
+        //                 if (error) return cb(error);
+        //                 var job = {};
+        //                 job['email'] = key;
+        //                 job['userData'] = JSON.parse(value);
+        //                 cb(null, job);
+        //             });
+        //         }, function (error, results) {
+        //             if (error) return console.log(error);
+        //             // console.log(results);
+        //             res.json({ 
+        //                 data: results,
+        //                 "status": "success",
+        //                 "responseCode": constants.STATUS_CODE.SUCCESS,
                     
-                    });
-                });
-            }
-        });
+        //             });
+        //         });
+        //     }
+        // });
 
 
 

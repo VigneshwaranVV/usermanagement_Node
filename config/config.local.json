@@ -6,5 +6,6 @@
   ],
   "elasticache_redis_url": "127.0.0.1",
   "elasticache_redis_port": "6379",
-  "newsapi_appkey":"24312351b27547219637086bce033b50"
+  "newsapi_appkey":"24312351b27547219637086bce033b50",
+  "mongoDB_elastic":"mongodb://localhost:27017/userManage"
 }

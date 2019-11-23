@@ -1,20 +1,28 @@
+const appRoot = require("app-root-path");
 var createError = require('http-errors');
 var express = require('express');
 const cors = require("cors");
 const session = require('express-session');
+const configData = require(appRoot + '/config/config.js')();
 const crypto = require('crypto');
+const db= process.env.MONGO_URL || configData.mongoDB_elastic;
 
 // const redis = require('redis');
 // const redisClient = redis.createClient();
 // const redisStore = require('connect-redis')(session);
 
+const mongoose = require('mongoose');
+
+mongoose
+  .connect(db)
+  .then(() => console.log("Database Connected"))
+  .catch(err => console.log(err));
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const appRoot = require("app-root-path");
 var indexRouter = require('./routes/index');
 const routeUtil = require(appRoot + "/utils/route_util.js");
-const configData = require(appRoot + '/config/config.js')();
 
 var app = express();
 app.use(cors())
