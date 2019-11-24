@@ -4,6 +4,12 @@ const constants = require(appRoot + "/common/constants")
 var async = require('async');
 //This method process the login API request from client using the response from Mulesoft.
 function listUser(req, res, next) {
+    res.json({
+        "status": "Failed",
+        "responseCode": constants.STATUS_CODE.INTERNAL_SERVER_ERROR,
+        "message": "Internal server error",
+    });
+    
     try {
 
         // var jobs = [];
