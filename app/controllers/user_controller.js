@@ -90,6 +90,15 @@ class UserController {
       });
     }
   }
+  updateUser(req, res, next) {
+    try {
+      userModel.updateUser(req, res, next);
+    } catch (e) {
+      res.status(500).json({
+        msg: 'Error - /user/updateUser request Failed!'
+      });
+    }
+  }
 }
 
 module.exports = UserController;

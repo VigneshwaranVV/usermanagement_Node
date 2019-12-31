@@ -18,3 +18,8 @@ Install and run node project
 5) npm install - install npm packages
 
 6) run package - node server.js OR nodemon server.js
+
+POSTMAN collection :==>
+https://www.getpostman.com/collections/b6255b63a3d5c3ae28dd
+
+add env ==> api_local as your url prefix

@@ -12,5 +12,6 @@ userRouter.post('/login', userController.login)
 userRouter.post('/register', validateRequest.validateRegistrationData, userController.registerUser)
 userRouter.post('/logout', userController.logout)
 userRouter.post('/deleteUser', userController.deleteUser)
+userRouter.post('/updateUser', userController.updateUser)
 
 module.exports = userRouter;

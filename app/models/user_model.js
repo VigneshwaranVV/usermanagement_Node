@@ -113,10 +113,31 @@ function deleteUser(req, res, next) {
     })
 }
 
+function updateUser(req, res, next) {
+  const reqBody = req.body;
+  let formData = reqBody.formData ? reqBody.formData : {};
+  users_schema.updateOne({ email: formData.email }, { formData: formData }).then(reply => {
+    if (!reply) {
+      return res.json({
+        "status": "failed",
+        "responseCode": 401,
+        "message": "User doesn't exist",
+      });
+    } else {
+      res.json({
+        "status": "success",
+        "responseCode": 200,
+        "data": formData,
+        "message": "UserData updated",
+      })
+    }
+  });
 
+}
 module.exports = {
   login,
   logout,
   registerUser,
-  deleteUser
+  deleteUser,
+  updateUser
 }
