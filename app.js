@@ -6,6 +6,7 @@ const session = require('express-session');
 const configData = require(appRoot + '/config/config.js')();
 const crypto = require('crypto');
 const db= process.env.MONGO_URL || configData.mongoDB_elastic;
+const bodyParser = require("body-parser");
 
 // const redis = require('redis');
 // const redisClient = redis.createClient();
@@ -57,9 +58,20 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(bodyParser.urlencoded({
+  limit: '20mb',
+  type: 'application/x-www-form-urlencoded',
+  extended: true
+}));
+app.use(bodyParser.json({
+  limit: '20mb',
+  type: 'application/json',
+  extended: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
