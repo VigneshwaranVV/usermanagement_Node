@@ -2,7 +2,7 @@
   "applicationVersion": "1.0.0",
   "whitelist_urls": [
     "http://localhost:3000/",
-    "https://vtestapp-1.herokuapp.com/"
+    "http://vnewsmanager.herokuapp.com/"
   ],
   "elasticache_redis_url": "",
   "elasticache_redis_port": "6379",
