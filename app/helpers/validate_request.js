@@ -19,6 +19,7 @@ class ValidateRequestController {
                 res.status(400).json({
                     Status: "failure",
                     ResponseCode: 400,
+                    message:errorMsg,
                     Reasons: [
                         {
                             ReasonCode: 601,
